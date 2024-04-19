@@ -83,7 +83,7 @@
             <option value="no course">No Course</option>
           </select>
           <br>
-          <button type="submit">Add Task</button>
+          <button type="submit" class="add-course-button">Add Task</button>
         </form>
       </div>
     </div>
@@ -92,7 +92,7 @@
   <div id="Courses" class="tabcontent">
     <h2>Course Menu</h2>
     <!--Button to add courses.-->
-    <button type="button" onclick="openAddCourseWindow()">Add Course</button>
+    <button type="button" class="add-course-button" onclick="openAddCourseWindow()">Add Course</button>
     <hr>
     <!--Column where courses are displayed.-->
     <div id="courseList" class="column" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
@@ -117,6 +117,7 @@
       </div>
     </div>
   </div>
+
 
   <!--Calendar tab-->
   <div id="Calendar" class="tabcontent">

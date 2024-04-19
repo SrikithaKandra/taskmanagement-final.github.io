@@ -155,14 +155,23 @@ function addTask() {
       taskItem.setAttribute("ondragstart", "drag(event)");
 
       taskItem.innerHTML = `
-        <h3 style="color: ${priorityColor};">${title} - ${course}</h3>
-<p style="color: ${priorityColor};">${description}</p>
-<p style="color: ${priorityColor};">Priority: ${priority}</p>
-<p style="color: ${priorityColor};">Deadline: ${selectedDate}</p>
-        <button onclick="completeTask('${taskId}')">Complete</button>
-        <button onclick="editTask('${taskId}')">Edit</button>
-        <button onclick="deleteTask('${taskId}')">Delete</button>
-      `;
+      <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+      <h3 style="color: ${priorityColor};display: inline-block;">${title} - ${course}</h3>
+      <div<button class="button-container" style="color: black;" onclick="toggleDetails('${taskId}')">View Details</button></div>
+      </h3>
+      </div>
+      <div class="details" style="display: none;">
+      <p style="color: ${priorityColor};">${description}</p>
+      <p><b>Priority:</b> ${priority}</p> 
+      <p><b>Deadline:</b> ${selectedDate}</p> 
+      </div>
+      <div style="margin-top: 10px;"> 
+      <button class="complete-button" onclick="completeTask('${taskId}')">Complete</button>
+      <button class="edit-button" onclick="editTask('${taskId}')">Edit</button>
+      <button class="delete-button" onclick="deleteTask('${taskId}')">Delete</button>
+      </div>
+`;
+  
 
       allTasksColumn.appendChild(taskItem);
       closeAddTaskModal();
@@ -172,6 +181,16 @@ function addTask() {
     alert("Please enter a task title.");
   }
 }
+
+function toggleDetails(taskId) {
+  var details = document.getElementById(taskId).querySelector(".details");
+  if (details.style.display === "none") {
+      details.style.display = "block";
+  } else {
+      details.style.display = "none";
+  }
+}
+
 
 function updateTaskStatus(taskId, newStatus) {
   var taskItem = document.getElementById(taskId);
@@ -206,24 +225,23 @@ function editTask(taskId) {
   var description = taskItem.querySelector("p").innerText;
   var selectedDate = taskItem.querySelector("p:nth-child(4)").innerText;
   var priority = taskItem.querySelector("p:nth-child(3)").innerText.trim();
+  var course = title.substring(title.indexOf("-") + 1).trim();
 
   // Set form fields with task details for editing
   document.getElementById("taskTitle").value = title.substring(0, title.indexOf("-")).trim();
   document.getElementById("taskDescription").value = description;
   document.getElementById("selectedDate").value = selectedDate;
   document.getElementById("taskPriority").value = priority;
-
-  // Set the course option
-  var course = title.substring(title.indexOf("-") + 1).trim();
   document.getElementById("courseOptions").value = course;
 
   // Open the AddTaskModal window
-  openAddTaskModal();
+  openAddTaskModal(selectedDate);
 
   // Set attributes to indicate edit mode and task ID
   document.getElementById("addTaskForm").setAttribute("data-edit-mode", "true");
   document.getElementById("addTaskForm").setAttribute("data-task-id", taskId);
 }
+
 
 // Flag and event handler for delete confirmation.
 var deleteOption = false;
