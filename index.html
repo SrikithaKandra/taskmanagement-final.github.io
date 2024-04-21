@@ -90,12 +90,20 @@
   </div>
 
   <div id="Courses" class="tabcontent">
-    <h2>Course Menu</h2>
+    <h2 id="course-menu-title">Course Menu</h2>
     <!--Button to add courses.-->
     <button type="button" class="add-course-button" onclick="openAddCourseWindow()">Add Course</button>
     <hr>
     <!--Column where courses are displayed.-->
-    <div id="courseList" class="column" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <div id="courseListSpring" class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <h2>Spring 2024</h2>
+    </div><br>
+    <div id="courseListSummer" class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <h2>Summer 2024</h2>
+    </div><br>
+    <div id="courseListFall" class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <h2>Fall 2024</h2>
+    </div><br>
 
     <!--This is the pop up window that appears when clicking on Add Course.-->
     <div id="addCourse" class="course-menu">
@@ -110,7 +118,14 @@
           <input type="text" id="courseName" name="courseName" required><br>
           <!--Users may enter some description of the course.-->
           <label for="courseDescription">Course Description:</label>
-          <textarea id="courseDescription" name="courseDescription" rows="1"></textarea>
+          <textarea id="courseDescription" name="courseDescription" rows="1"></textarea><br>
+          <!--Users can now specify the semester the course it from.-->
+          <!-- <label for="courseSemester">Semester:</label>
+          <select id="courseSemester" name="courseSemester">
+            <option value="spring2024">Spring 2024</option>
+            <option value="summer2024">Summer 2024</option>
+            <option value="fall2024">Fall 2024</option>
+          </select><br> -->
           <!--Button to submit the form.-->
           <button type="submit">Add</button>
         </form>
@@ -129,9 +144,12 @@
   <!-- This is popup window for UNDO-->
   <div id="undoPopup" class="popup">
     <p>Task deleted. Undo?</p>
-    <button onclick="undoDeletion()">Undo</button>
-    <button onclick="closeUndoPopup()">Close</button>
+    <div class="popup-footer">
+      <button onclick="undoDeletion()">Undo</button>
+      <button onclick="closeUndoPopup()">Close</button> 
+    </div>
   </div>
+
   <div id="taskCreatedFeedback" class="feedback-popup">
     Task created successfully!
   </div>

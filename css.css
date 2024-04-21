@@ -20,7 +20,7 @@
 }
 
 body {
-  font-family: serif, Playfair Display;
+  font-family: Calibri;
   margin: 0;
   padding: 0;
   background-color: var(--background-color);
@@ -91,7 +91,7 @@ header {
   flex: 1;
   background-color: var(--column-bg-color);
   color: black;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin-right: 10px;
   overflow: auto;
@@ -108,7 +108,8 @@ header {
 .task {
   background-color: var(--task-bg-color);
   color: black;
-  border: 1px solid #ccc;
+  /*border: 1px solid #ccc;*/
+  box-shadow: 2px 2px 2px lightslategrey;
   margin-bottom: 5px;
   padding: 10px;
   cursor: move;
@@ -155,6 +156,7 @@ header {
   max-width: 400px;
   margin: 20px;
   border-radius: 5px;
+  box-shadow: 0px 2px 4px lightgray;
 }
 
 .dark-mode .modal-content {
@@ -184,13 +186,18 @@ header {
 
 /* Style for the "Add course" button */
 .add-course-button {
-  background-color: rgba(0, 119, 255, 0.68); /* Change the background color to green */
+  background-color: rgba(7, 160, 231, 0.507); /* Change the background color to blue */
   color: white; /* Change the text color to white */
   padding: 5px;
   border: none;
   cursor: pointer;
   font-size: 14px;
 }
+.add-course-button:hover {
+  background-color: white;
+  color: rgba(7, 160, 231, 0.507);
+}
+
 
 /* Style for the "Complete" button */
 .complete-button {
@@ -314,25 +321,48 @@ header {
 }
 
 /* Style for the undo popup window */
+/* This is the popup window background. */
 .popup {
   display: none;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: var(--popup-bg-color);
+  background-color: whitesmoke;
+  height: 100px;
   /* Change background color as needed */
   padding: 20px;
   min-width: 400px;
   max-width: 400px;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 9999;
-}
-.dark-mode .popup{
-  background-color: #CBC3E3;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 }
 
+.popup-footer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  background-color: var(--popup-bg-color);
+  height: 10px;
+  /* Change background color as needed */
+  padding: 20px;
+  min-width: 400px;
+  max-width: 400px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.dark-mode .popup{
+  background-color: #301934;
+}
+
+.dark-mode .popup-footer {
+  background-color: #CBC3E3;
+}
 .popup p {
   margin-bottom: 10px;
 }
@@ -341,6 +371,7 @@ header {
   margin-right: 10px;
 }
 
+/* Dark mode styles. */
 .dark-mode {
   color: #f9f9f9;
   /* Light text color */

@@ -80,6 +80,7 @@ function completeTask(taskId) {
   var taskItem = document.getElementById(taskId);
   var completedTasksColumn = document.getElementById("completedTasks");
   var allTasksColumn = document.getElementById("allTasks");
+  var upcomingTasksColumn = document.getElementById("upcomingTasks");
 
   if (taskItem && completedTasksColumn && allTasksColumn) {
     if (taskItem.parentNode === completedTasksColumn) {
@@ -87,11 +88,13 @@ function completeTask(taskId) {
       // Move it back to "All Tasks" and change button to "Complete"
       allTasksColumn.appendChild(taskItem);
       taskItem.querySelector("button").innerText = "Complete";
-    } else {
+    } else if (taskItem.parentNode === allTasksColumn || taskItem.parentNode === upcomingTasksColumn){
       // Task is currently in "All Tasks" or "Upcoming Tasks"
       // Move it to "Completed Tasks" and change button to "Incomplete"
       completedTasksColumn.appendChild(taskItem);
       taskItem.querySelector("button").innerText = "Incomplete";
+    } else {
+      taskItem.querySelector("button").innerText = "Edit";
     }
   }
 }
@@ -170,9 +173,7 @@ function addTask() {
       <button class="edit-button" onclick="editTask('${taskId}')">Edit</button>
       <button class="delete-button" onclick="deleteTask('${taskId}')">Delete</button>
       </div>
-`;
-  
-
+      `;
       allTasksColumn.appendChild(taskItem);
       closeAddTaskModal();
     }
@@ -196,6 +197,9 @@ function updateTaskStatus(taskId, newStatus) {
   var taskItem = document.getElementById(taskId);
   var targetColumn = document.getElementById(newStatus);
 
+  if (taskItem.querySelector("button").innerText === "Edit") {
+    return;
+  }
   if (taskItem && targetColumn) {
     var completeButton = taskItem.querySelector("button");
     // Update the button text based on the target column
@@ -243,11 +247,11 @@ function editTask(taskId) {
 }
 
 
-// Flag and event handler for delete confirmation.
-var deleteOption = false;
-document.getElementById("yesDeleteTask").onclick = function() {
+// // Flag and event handler for delete confirmation.
+// var deleteOption = false;
+// document.getElementById("yesDeleteTask").onclick = function() {
 
-}
+// }
 
 function deleteTask(taskId) {
   var taskItem = document.getElementById(taskId);
@@ -313,7 +317,7 @@ function closeAddCourseWindow() {
 function addCourse() {
   var name = document.getElementById("courseName").value;
   var description = document.getElementById("courseDescription").value;
-  var courseColumn = document.getElementById("courseList");
+  var courseColumn = document.getElementById("courseListSpring");
   var courseItem = document.createElement("div");
   var courseId = name;
   // Dropdown bar for the options of courses in Add Task.
@@ -321,14 +325,16 @@ function addCourse() {
   var option = document.createElement("option");
 
   // Set the course attributes and add to the course list.
+  courseItem.setAttribute("class", "task");
   courseItem.setAttribute("id", courseId);
-  courseItem.setAttribute("class", "course");
   courseItem.innerHTML = `
-        <h4 style="display: inline-block;">${name}</h4>
-        <p style="display: inline-block;">${description}</p>
-        <button onclick="editCourse('${courseId}')" style="display: inline-block;">Edit</button>
-        <button onclick="removeCourse('${courseId}')" style="display: inline-block;">Remove</button>
-        `;
+      <div style="display: flex; flex-direction: row; justify-content: flex-start; gap: 20px; align-items: center;">
+      <h4 style="display: inline-block;">${name}</h3>
+      <p style="display: inline-block;">${description}</p>
+      <button onclick="editCourse('${courseId}')" style="display: inline-block;">Edit</button>
+      <button onclick="removeCourse('${courseId}')" style="display: inline-block;">Remove</button>      
+      </div>
+      `;
   courseColumn.appendChild(courseItem);
 
   // Also update the dropdown bar.
@@ -384,6 +390,7 @@ function removeCourse(courseId) {
 function toggleColors() {
     var body = document.body;
     body.classList.toggle("dark-mode");
+    document.getElementById("course-menu-title").style.color="black";
 }
 
 
