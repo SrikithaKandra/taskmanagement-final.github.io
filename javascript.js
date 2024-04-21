@@ -242,8 +242,6 @@ function editTask(taskId) {
   document.getElementById("addTaskForm").setAttribute("data-task-id", taskId);
 }
 
-
-
 // Flag and event handler for delete confirmation.
 var deleteOption = false;
 document.getElementById("yesDeleteTask").onclick = function() {
