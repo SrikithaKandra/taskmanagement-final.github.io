@@ -133,7 +133,7 @@ header {
 .dark-mode .add-task-button{
   background-color: #301934;
   color: white;
-  
+
 }
 
 .add-task-modal {
@@ -408,4 +408,16 @@ input:checked+.slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
+}
+.feedback-popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: rgba(0, 128, 0, 0.8); /* Adjust color and opacity as needed */
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  transition: opacity 1s ease;
+  opacity: 1;
+  display: none;
 }
