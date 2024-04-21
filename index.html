@@ -132,34 +132,6 @@
     <button onclick="undoDeletion()">Undo</button>
     <button onclick="closeUndoPopup()">Close</button>
   </div>
-  <div id="taskCreatedFeedback" class="feedback-popup">
-    Task created successfully!
-  </div>
-  <script>
-    // Add this function to show the feedback popup when a task is created
-    function showTaskCreatedFeedback() {
-      var feedbackPopup = document.getElementById("taskCreatedFeedback");
-      feedbackPopup.style.display = "block";
-
-      // Set a timeout to make the feedback popup fade away after 3 seconds
-      setTimeout(function() {
-        feedbackPopup.style.opacity = "0";
-        setTimeout(function() {
-          feedbackPopup.style.display = "none";
-        }, 1000); // Fading duration
-      }, 3000); // Adjust the time duration as needed
-    }
-
-    // Modify the addTask() function to call showTaskCreatedFeedback() when a task is successfully created
-    function addTask() {
-      // Existing addTask() function code remains the same
-
-      // After a task is successfully added, call showTaskCreatedFeedback()
-      showTaskCreatedFeedback();
-
-      return false; // Prevent form submission
-    }
-  </script>
 
   <!--Script files.-->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
