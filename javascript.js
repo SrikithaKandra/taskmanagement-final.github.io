@@ -225,14 +225,14 @@ function updateTaskStatus(taskId, newStatus) {
 
 function editTask(taskId) {
   var taskItem = document.getElementById(taskId);
-  var title = taskItem.querySelector("h3").innerText;
-  var description = taskItem.querySelector("p").innerText;
-  var selectedDate = taskItem.querySelector("p:nth-child(4)").innerText;
-  var priority = taskItem.querySelector("p:nth-child(3)").innerText.trim();
-  var course = title.substring(title.indexOf("-") + 1).trim();
+  var title = taskItem.querySelector("h3").innerText.split(" - ")[0];
+  var course = taskItem.querySelector("h3").innerText.split(" - ")[1];
+  var description = taskItem.querySelector(".details > p:first-child").innerText;
+  var selectedDate = taskItem.querySelector(".details > p:nth-child(3)").innerText.split(": ")[1];
+  var priority = taskItem.querySelector(".details > p:nth-child(2)").innerText.split(": ")[1];
 
   // Set form fields with task details for editing
-  document.getElementById("taskTitle").value = title.substring(0, title.indexOf("-")).trim();
+  document.getElementById("taskTitle").value = title;
   document.getElementById("taskDescription").value = description;
   document.getElementById("selectedDate").value = selectedDate;
   document.getElementById("taskPriority").value = priority;
