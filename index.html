@@ -61,29 +61,27 @@
         <button type="button" onclick="closeAddTaskModal()" class="close-button">Close</button>
         <h2>Add Task</h2>
         <form id="addTaskForm" onsubmit="return addTask()">
-          <label for="taskTitle">Task Name:</label>
-          <input type="text" id="taskTitle" name="taskTitle" required><br>
-          <label for="taskDescription">Task Description:</label>
-          <textarea id="taskDescription" name="taskDescription" rows="4"></textarea><br>
-
-          <label for="taskPriority">Priority:</label>
-          <select id="taskPriority" name="taskPriority">
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-          </select><br>
-
-          <label for="taskdate">Task Date:</label>
-          <input type="date" id="selectedDate" name="selectedDate"><br>
-
-          <!--Drop down bar for the courses.-->
-          <br>
-          <label for="courseOption">Course: </label>
-          <select id="courseOptions" name="courseOptions">
-            <option value="no course">No Course</option>
-          </select>
-          <br>
-          <button type="submit" class="add-course-button">Add Task</button>
+          <div id="taskForm" class="task-form">
+            <div class="form-group">
+              <label for="taskTitle">Task Title:</label>
+              <input type="text" id="taskTitle" name="taskTitle" required>
+            </div>
+            <div class="form-group">
+              <label for="taskDescription">Task Description:</label>
+              <textarea id="taskDescription" name="taskDescription" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="taskPriority">Priority:</label>
+              <select id="taskPriority" name="taskPriority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+            <div class = "button-container">
+              <button type="submit" class="add-task-button">Add Task</button>
+            </div>
+          </div>
         </form>
       </div>
     </div>
@@ -133,7 +131,10 @@
     </div>
   </div>
 
-
+  <div id="taskpopup" class="taskpopup">
+  <span id="popupMessage"></span>
+  </div>
+  
   <!--Calendar tab-->
   <div id="Calendar" class="tabcontent">
     <div id="calendarSection" class="calendar-section">
