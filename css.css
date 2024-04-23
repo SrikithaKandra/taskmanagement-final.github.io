@@ -440,15 +440,41 @@ input:checked+.slider:before {
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
-.feedback-popup {
+.taskpopup {
   position: fixed;
   top: 20px;
   right: 20px;
-  background-color: rgba(0, 128, 0, 0.8); /* Adjust color and opacity as needed */
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  transition: opacity 1s ease;
+  background-color: #fff;
+  color: #000;
+  padding: 20px;
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.taskpopup.show {
   opacity: 1;
-  display: none;
+}
+.task-form {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group select,
+.form-group input[type="text"],
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
