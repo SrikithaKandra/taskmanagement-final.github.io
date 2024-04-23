@@ -78,6 +78,16 @@
                 <option value="high">High</option>
               </select>
             </div>
+            <div class="form-group">
+              <label for="selectedDate">Task Date:</label>
+              <input type="date" id="selectedDate" name="selectedDate" required>
+            </div>
+            <div class="form-group">
+                <label for="courseOptions">Course:</label>
+                <select id="courseOptions" name="courseOptions">
+                  <option value="no course">No Course</option>
+                </select>  
+            </div>
             <div class = "button-container">
               <button type="submit" class="add-task-button">Add Task</button>
             </div>
@@ -131,10 +141,7 @@
     </div>
   </div>
 
-  <div id="taskpopup" class="taskpopup">
-  <span id="popupMessage"></span>
-  </div>
-  
+
   <!--Calendar tab-->
   <div id="Calendar" class="tabcontent">
     <div id="calendarSection" class="calendar-section">
