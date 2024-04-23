@@ -460,3 +460,32 @@ input:checked+.slider:before {
 button:hover {
   background-color: #45a049;
 }
+
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.task-form {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group select,
+.form-group input[type="text"],
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
